@@ -7,7 +7,7 @@ spec:
   selector:
     app: hangfireserver
   ports:
-   - protocol: TCP
+  - protocol: TCP
     port: 5286
     targetPort: 5286
     nodePort: 30001

@@ -1,4 +1,7 @@
 minikube start
 minikube dashboard
 
-kubectl
+kubectl get services
+minikube service <name-service>
+
+cat https.crt | base64

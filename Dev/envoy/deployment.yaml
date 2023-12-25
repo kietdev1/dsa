@@ -3,7 +3,13 @@ kind: Deployment
 metadata:
   name: envoy
 spec:
+  selector:
+    matchLabels:
+      app: envoy
   template:
+    metadata:
+      labels:
+        app: envoy
     spec:
       containers:
       - name: envoy
@@ -14,7 +20,7 @@ spec:
         - containerPort: 9901
         volumeMounts:
         - name: config
-          mountPath: /etc/envoy
+          mountPath: /etc/envoy/
         - name: tls 
           mountPath: /etc/ssl/certs/
       volumes:
