@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: envoy
+spec:
+  template:
+    spec:
+      containers:
+      - name: envoy
+        image: envoyproxy/envoy:tools-v1.27-latest
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        - containerPort: 9901
+        volumeMounts:
+        - name: config
+          mountPath: /etc/envoy
+        - name: tls 
+          mountPath: /etc/ssl/certs/
+      volumes:
+      - name: config
+        configMap:
+          name: envoy-config
+      - name: tls
+        secret:
+          secretName: envoy-tls

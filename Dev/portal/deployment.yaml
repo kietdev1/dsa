@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portal
+spec:
+  selector:
+    matchLabels:
+      app: portal
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: portal
+    spec:
+      containers:
+      - name: portal
+        image: kietdev1/zaeshop-portal-dev:latest
+        ports:
+        - containerPort: 5288
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Development
+        - name: ASPNETCORE_ENVIRONMENT_DEPLOYED
+          value: "True"

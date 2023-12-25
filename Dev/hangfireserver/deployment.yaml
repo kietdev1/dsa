@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hangfireserver
+spec:
+  selector:
+    matchLabels:
+      app: hangfireserver
+  template:
+    metadata:
+      labels:
+        app: hangfireserver
+    spec:
+      containers:
+      - name: hangfireserver
+        image: kietdev1/zaeshop-hangfireserver-dev:latest
+        ports:
+        - containerPort: 5286
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Development

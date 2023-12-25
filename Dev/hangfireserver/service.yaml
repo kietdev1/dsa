@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hangfireserver 
+spec:
+  type: NodePort
+  selector:
+    app: hangfireserver
+  ports:
+   - protocol: TCP
+    port: 5286
+    targetPort: 5286
+    nodePort: 30001
