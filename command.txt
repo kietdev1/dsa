@@ -3,5 +3,9 @@ minikube dashboard
 
 kubectl get services
 minikube service <name-service>
-
 cat https.crt | base64
+
+minikube addons enable ingress
+kubectl apply -f envoy-ingress.yaml
+kubectl get svc -n ingress-nginx
+kubectl logs -n ingress-nginx ingress-nginx-controller-7c6974c4d8-4dt4w
